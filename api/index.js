@@ -1,13 +1,29 @@
-import request from './request'
+import {
+  swiperData,
+  goodsListData,
+  goodsDetailData,
+  cartGoodsListData,
+  preOrderData,
+  preOrderDetailData,
+  userLoginData,
+  orderPayData
+} from './mockData'
 
-
+// 模拟异步请求延迟
+const mockDelay = (data, delay = 500) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(data);
+    }, delay);
+  });
+};
 
 // 首页的请求
 export const homeRequest = {
 
   // 获取轮播图列表
   getSwiperList() {
-    return request.get('flower/getBanner')
+    return mockDelay(swiperData);
   },
 
   /**
@@ -15,7 +31,18 @@ export const homeRequest = {
    * @params ={pageNum, pageSize}, params 非必须
    * */
   getGoodsList(params) {
-    return request.get('flower/getList', params)
+    // 模拟分页逻辑
+    const pageNum = params?.pageNum || 1;
+    const pageSize = params?.pageSize || 10;
+    const startIndex = (pageNum - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    
+    const paginatedData = {
+      ...goodsListData,
+      flowers: goodsListData.flowers.slice(startIndex, endIndex)
+    };
+    
+    return mockDelay(paginatedData);
   },
 
   /**
@@ -24,7 +51,17 @@ export const homeRequest = {
    * 
    * */
   getGoodsDetail(params) {
-    return request.get('flower/getDetail', params)
+    // 根据flowerId返回对应的商品详情
+    const flowerId = params?.flowerId;
+    const detailData = {
+      ...goodsDetailData,
+      flower: {
+        ...goodsDetailData.flower,
+        flowerId: flowerId || 1
+      }
+    };
+    
+    return mockDelay(detailData);
   },
 }
 
@@ -35,12 +72,13 @@ export const cartRequest = {
    * @params ={flowerId}
    * */
   addCartList(params) {
-    return request.get('cart/addCart', params);
+    // 模拟添加成功
+    return mockDelay({ code: 666, message: '添加成功' });
   },
 
   // 获取购物车商品列表
   getCartGoodsList() {
-    return request.get('cart/getList');
+    return mockDelay(cartGoodsListData);
   },
 
   /**
@@ -48,7 +86,8 @@ export const cartRequest = {
    * @params ={cartId, buyNum}
    * */
   changeGoodsNumInfo(params) {
-    return request.get('cart/updateCart', params)
+    // 模拟修改成功
+    return mockDelay({ code: 666, message: '修改成功' });
   },
 
   /**
@@ -56,7 +95,8 @@ export const cartRequest = {
    * @params ={cartId}, cartId 为数组
    * */
   delCartGoods(params) {
-    return request.post('cart/delById', params)
+    // 模拟删除成功
+    return mockDelay({ code: 666, message: '删除成功' });
   },
 }
 
@@ -68,7 +108,7 @@ export const preOrderRequest = {
    * @params ={cartId, totalPrice}
    * */
   addPreOrder(params) {
-    return request.post('preOrder/add', params);
+    return mockDelay(preOrderData);
   },
 
   /**
@@ -76,13 +116,16 @@ export const preOrderRequest = {
    * @params ={preOrderId }
    * */
   getPreOrderDetail(params) {
-    return request.get('preOrder/getDetail', params);
+    return mockDelay(preOrderDetailData);
   },
 
 
   // 获取预订单列表
   getPreOrderList() {
-    return request.get('preOrder/all');
+    return mockDelay({
+      code: 666,
+      preOrders: [preOrderData.result]
+    });
   }
 }
 
@@ -97,7 +140,7 @@ export const userRequest = {
    * 
    * */
   wxLogin(params) {
-    return request.post('user/wxlogin', params);
+    return mockDelay(userLoginData);
   }
 
 }
@@ -108,6 +151,6 @@ export const orderRequest = {
 
   // 创建订单
   createOrder() {
-    return request.post('order/create');
+    return mockDelay(orderPayData);
   }
 }
