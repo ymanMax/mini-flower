@@ -1,0 +1,110 @@
+<!-- 订单状态标签 -->
+<van-tabs active="{{activeTab}}" bind:change="onTabChange">
+  <van-tab wx:for="{{tabs}}" wx:key="id" name="{{item.id}}">
+    {{item.name}}
+  </van-tab>
+</van-tabs>
+
+<!-- 订单列表 -->
+<view class="order-list" wx:if="{{!isShowEmpty}}">
+  <view
+    wx:for="{{orderList}}"
+    wx:key="orderId"
+    class="order-item"
+  >
+    <!-- 订单头部 -->
+    <view class="order-header">
+      <view class="order-info">
+        <text class="order-id">订单号：{{item.orderId}}</text>
+        <text class="order-time">{{item.createTime}}</text>
+      </view>
+      <view class="order-status {{item.status}}">
+        {{item.status}}
+      </view>
+    </view>
+
+    <!-- 商品列表 -->
+    <view class="goods-list">
+      <view
+        wx:for="{{item.goods}}"
+        wx:key="flowerId"
+        wx:for-item="goodsItem"
+        class="goods-item"
+        bindtap="viewOrderDetail"
+        data-orderid="{{item.orderId}}"
+      >
+        <view class="goods-image">
+          <image src="{{goodsItem.imgUrl}}" mode="aspectFill" />
+        </view>
+        <view class="goods-info">
+          <view class="goods-name">{{goodsItem.goodName}}</view>
+          <view class="goods-price">
+            <text>¥{{goodsItem.price}}</text>
+            <text class="goods-num">x{{goodsItem.buyNum}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 订单底部 -->
+    <view class="order-footer">
+      <view class="total-price">
+        总计：¥{{item.totalPrice}}
+      </view>
+      <view class="order-actions">
+        <!-- 待支付 -->
+        <block wx:if="{{item.status === '待支付'}}">
+          <van-button size="small" bindtap="cancelOrder" data-orderid="{{item.orderId}}" data-index="{{index}}">
+            取消订单
+          </van-button>
+          <van-button type="primary" size="small" bindtap="goToPay" data-orderid="{{item.orderId}}">
+            去支付
+          </van-button>
+        </block>
+
+        <!-- 待发货 -->
+        <block wx:if="{{item.status === '待发货'}}">
+          <van-button size="small" bindtap="cancelOrder" data-orderid="{{item.orderId}}" data-index="{{index}}">
+            取消订单
+          </van-button>
+        </block>
+
+        <!-- 待收货 -->
+        <block wx:if="{{item.status === '待收货'}}">
+          <van-button type="primary" size="small" bindtap="confirmReceipt" data-orderid="{{item.orderId}}" data-index="{{index}}">
+            确认收货
+          </van-button>
+        </block>
+
+        <!-- 已完成 -->
+        <block wx:if="{{item.status === '已完成'}}">
+          <van-button size="small" bindtap="viewOrderDetail" data-orderid="{{item.orderId}}">
+            查看详情
+          </van-button>
+        </block>
+
+        <!-- 已取消 -->
+        <block wx:if="{{item.status === '已取消'}}">
+          <van-button size="small" bindtap="viewOrderDetail" data-orderid="{{item.orderId}}">
+            查看详情
+          </van-button>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 空状态 -->
+<van-empty
+  wx:else
+  description="暂无订单"
+  image="https://img.yzcdn.cn/vant/empty-image.png"
+>
+  <van-button type="primary" bindtap="goToProductList">去逛逛</van-button>
+</van-empty>
+
+<!-- 加载状态 -->
+<view wx:if="{{loading}}" class="loading-overlay">
+  <van-loading type="spinner" size="32" />
+  <text>加载中...</text>
+</view>

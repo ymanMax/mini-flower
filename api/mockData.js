@@ -282,6 +282,141 @@ const orderPayData = {
   }
 };
 
+// 收藏商品列表数据
+const collectGoodsListData = {
+  code: 666,
+  collects: [
+    {
+      collectId: 1,
+      flowerId: 2,
+      goodName: '百合花束',
+      price: 98.00,
+      originPrice: 128.00,
+      imgUrl: '/img/bg.png',
+      flowerLanguage: '纯洁百合，寓意百年好合',
+      saleNum: 89,
+      stock: 30,
+      collectTime: '2024-01-15 10:30:00'
+    },
+    {
+      collectId: 2,
+      flowerId: 6,
+      goodName: '郁金香花束',
+      price: 108.00,
+      originPrice: 138.00,
+      imgUrl: '/img/bg.png',
+      flowerLanguage: '优雅郁金香，展现高贵气质',
+      saleNum: 92,
+      stock: 35,
+      collectTime: '2024-01-14 15:20:00'
+    }
+  ]
+};
+
+// 订单列表数据
+const orderListData = {
+  code: 666,
+  orders: [
+    {
+      orderId: 'ORD2024001',
+      totalPrice: 542.00,
+      status: '已完成',
+      createTime: '2024-01-10 14:30:00',
+      goods: [
+        {
+          flowerId: 1,
+          goodName: '红玫瑰花束',
+          price: 128.00,
+          imgUrl: '/img/bg.png',
+          buyNum: 2
+        },
+        {
+          flowerId: 3,
+          goodName: '康乃馨花束',
+          price: 68.00,
+          imgUrl: '/img/bg.png',
+          buyNum: 1
+        }
+      ]
+    },
+    {
+      orderId: 'ORD2024002',
+      totalPrice: 196.00,
+      status: '待发货',
+      createTime: '2024-01-12 11:20:00',
+      goods: [
+        {
+          flowerId: 2,
+          goodName: '百合花束',
+          price: 98.00,
+          imgUrl: '/img/bg.png',
+          buyNum: 2
+        }
+      ]
+    }
+  ]
+};
+
+// 会员信息数据
+const memberInfoData = {
+  code: 666,
+  result: {
+    memberLevel: '黄金会员',
+    points: 1250,
+    growthValue: 3800,
+    nextLevel: '铂金会员',
+    nextLevelNeed: 1200
+  }
+};
+
+// 积分兑换商品数据
+const pointsGoodsData = {
+  code: 666,
+  goods: [
+    {
+      goodsId: 1,
+      name: '10元现金券',
+      points: 1000,
+      imgUrl: '/img/bg.png',
+      stock: 50
+    },
+    {
+      goodsId: 2,
+      name: '精美花瓶',
+      points: 2000,
+      imgUrl: '/img/bg.png',
+      stock: 20
+    }
+  ]
+};
+
+// 商品评价数据
+const goodsCommentsData = {
+  code: 666,
+  comments: [
+    {
+      commentId: 1,
+      flowerId: 1,
+      userNickname: '小明',
+      userAvatar: '/img/my.png',
+      content: '花很新鲜，包装精美，女朋友很喜欢！',
+      score: 5,
+      createTime: '2024-01-08 16:40:00',
+      imgUrls: ['/img/bg.png', '/img/background.png']
+    },
+    {
+      commentId: 2,
+      flowerId: 1,
+      userNickname: '小红',
+      userAvatar: '/img/my.png',
+      content: '配送很及时，花的质量很好，下次还会购买。',
+      score: 4,
+      createTime: '2024-01-05 10:20:00',
+      imgUrls: []
+    }
+  ]
+};
+
 // 导出所有mock数据
 module.exports = {
   swiperData,
@@ -291,5 +426,10 @@ module.exports = {
   preOrderData,
   preOrderDetailData,
   userLoginData,
-  orderPayData
+  orderPayData,
+  collectGoodsListData,
+  orderListData,
+  memberInfoData,
+  pointsGoodsData,
+  goodsCommentsData
 };

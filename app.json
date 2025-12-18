@@ -1,6 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/product/list/list",
+    "pages/collect/collect",
+    "pages/order/list/list",
+    "pages/member/member",
     "pages/my/my",
     "pages/cart/cart",
     "pages/detail/detail",

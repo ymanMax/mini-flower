@@ -27,18 +27,30 @@
       </view>
     </view>
   </view>
+  <view class="member-info bg-fff flex fd-c wp-100 jc-sa" bindtap="goToMemberCenter">
+    <view class="member-header">
+      <van-icon name="user-o" size="32" />
+      <text class="member-title">会员中心</text>
+    </view>
+    <view class="member-details">
+      <text class="points">积分：1250</text>
+      <text class="level">黄金会员</text>
+      <van-icon name="arrow" size="16" />
+    </view>
+  </view>
+
   <view class="order-box bg-fff flex fd-c wp-100 jc-sa">
-    <van-cell title="我的订单" value="查看更多" is-link></van-cell>
+    <van-cell title="我的订单" value="查看更多" is-link bindtap="goToOrderList"></van-cell>
     <view class="flex jc-sa fs-14 bc-fff pt-5 pb-5">
-      <view class="flex fd-c ai-c fc-999">
+      <view class="flex fd-c ai-c fc-999" bindtap="goToOrderList" data-tab="pending_pay">
         <van-icon size="18" name="after-sale" />
         <text>待支付</text>
       </view>
-      <view class="flex fd-c ai-c fc-999">
+      <view class="flex fd-c ai-c fc-999" bindtap="goToOrderList" data-tab="pending_receive">
         <van-icon size="18" name="logistics" />
         <text>待收货</text>
       </view>
-      <view class="flex fd-c ai-c fc-999">
+      <view class="flex fd-c ai-c fc-999" bindtap="goToOrderList" data-tab="completed">
         <van-icon size="18" name="cluster-o" />
         <text>已完成</text>
       </view>
@@ -47,7 +59,7 @@
 </view>
 <view style="margin-top: 65px;">
   <van-cell title="领劵中心" icon="coupon-o" is-link />
-  <van-cell title="我的收藏" icon="star-o" is-link />
+  <van-cell title="我的收藏" icon="star-o" is-link bindtap="goToCollect" />
   <van-cell title="收货地址" icon="location-o" is-link />
   <van-cell title="购物车" icon="cart-o" is-link />
 </view>

@@ -1,0 +1,117 @@
+<!-- 会员信息头部 -->
+<view class="member-header">
+  <view class="member-avatar">
+    <van-icon name="user-o" size="60" />
+  </view>
+  <view class="member-info">
+    <view class="member-level">{{memberInfo.memberLevel || '普通会员'}}</view>
+    <view class="member-points">
+      <text>积分：{{memberInfo.points || 0}}</text>
+      <text class="growth-value">成长值：{{memberInfo.growthValue || 0}}</text>
+    </view>
+    <view class="next-level" wx:if="{{memberInfo.nextLevel}}">
+      距离{{memberInfo.nextLevel}}还需{{memberInfo.nextLevelNeed || 0}}成长值
+    </view>
+  </view>
+</view>
+
+<!-- 标签页 -->
+<van-tabs active="{{activeTab}}" bind:change="onTabChange">
+  <van-tab wx:for="{{tabs}}" wx:key="id" name="{{item.id}}">
+    {{item.name}}
+  </van-tab>
+</van-tabs>
+
+<!-- 会员信息标签页内容 -->
+<view wx:if="{{activeTab === 'info'}}" class="info-content">
+  <view class="info-section">
+    <view class="section-title">会员权益</view>
+    <view class="benefits-list">
+      <view class="benefit-item">
+        <van-icon name="gift-o" size="24" />
+        <text>生日专享礼品</text>
+      </view>
+      <view class="benefit-item">
+        <van-icon name="coupon-o" size="24" />
+        <text>每月专属优惠券</text>
+      </view>
+      <view class="benefit-item">
+        <van-icon name="fire-o" size="24" />
+        <text>新品优先购买权</text>
+      </view>
+      <view class="benefit-item">
+        <van-icon name="phone-o" size="24" />
+        <text>专属客服服务</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 积分记录标签页内容 -->
+<view wx:if="{{activeTab === 'points'}}" class="points-content">
+  <view class="points-list">
+    <view
+      wx:for="{{pointsRecord}}"
+      wx:key="id"
+      class="points-item"
+    >
+      <view class="points-info">
+        <text class="record-type">{{item.type}}</text>
+        <text class="record-time">{{item.createTime}}</text>
+      </view>
+      <view class="points-amount {{item.points > 0 ? 'positive' : 'negative'}}">
+        {{item.points > 0 ? '+' : ''}}{{item.points}}
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{pointsRecord.length === 0}}" class="empty-record">
+    <van-icon name="points" size="60" color="#ccc" />
+    <text>暂无积分记录</text>
+  </view>
+</view>
+
+<!-- 积分兑换标签页内容 -->
+<view wx:if="{{activeTab === 'exchange'}}" class="exchange-content">
+  <view class="exchange-list">
+    <view
+      wx:for="{{pointsGoodsList}}"
+      wx:key="goodsId"
+      class="exchange-item"
+    >
+      <view class="goods-image">
+        <image src="{{item.imgUrl}}" mode="aspectFill" />
+      </view>
+      <view class="goods-info">
+        <view class="goods-name">{{item.name}}</view>
+        <view class="goods-points">
+          <van-icon name="points" size="20" />
+          <text>{{item.points}}积分</text>
+        </view>
+        <view class="goods-stock">库存：{{item.stock}}</view>
+      </view>
+      <van-button
+        type="primary"
+        size="small"
+        class="exchange-btn"
+        bindtap="exchangePoints"
+        data-goodsid="{{item.goodsId}}"
+        data-points="{{item.points}}"
+        disabled="{{item.stock <= 0}}"
+      >
+        {{item.stock <= 0 ? '已兑完' : '立即兑换'}}
+      </van-button>
+    </view>
+  </view>
+
+  <view wx:if="{{pointsGoodsList.length === 0}}" class="empty-exchange">
+    <van-icon name="gift-o" size="60" color="#ccc" />
+    <text>暂无积分兑换商品</text>
+  </view>
+</view>
+
+<!-- 加载状态 -->
+<view wx:if="{{loading}}" class="loading-overlay">
+  <van-loading type="spinner" size="32" />
+  <text>加载中...</text>
+</view>

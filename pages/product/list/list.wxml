@@ -1,0 +1,188 @@
+<!-- 顶部筛选栏 -->
+<view class="filter-bar">
+  <!-- 分类筛选 -->
+  <view class="filter-item" bindtap="openFilterPanel">
+    <text>分类</text>
+    <van-icon name="arrow-down" size="12" />
+  </view>
+
+  <!-- 排序筛选 -->
+  <view class="filter-item" bindtap="openSortPanel">
+    <text>
+      {{sortOptions.find(item => item.id === filters.sort)?.name || '排序'}}
+    </text>
+    <van-icon name="arrow-down" size="12" />
+  </view>
+
+  <!-- 价格筛选 -->
+  <view class="filter-item" bindtap="openFilterPanel">
+    <text>价格</text>
+    <van-icon name="arrow-down" size="12" />
+  </view>
+</view>
+
+<!-- 分类标签 -->
+<view class="category-tabs">
+  <scroll-view scroll-x="true" class="category-scroll">
+    <view
+      wx:for="{{categories}}"
+      wx:key="id"
+      class="category-tab {{filters.category === item.id ? 'active' : ''}}"
+      bindtap="switchCategory"
+      data-category="{{item.id}}"
+    >
+      {{item.name}}
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 商品列表 -->
+<view class="goods-list">
+  <view
+    wx:for="{{goodsList}}"
+    wx:key="flowerId"
+    class="goods-item"
+    bindtap="goToDetail"
+    data-flowerid="{{item.flowerId}}"
+  >
+    <!-- 商品图片 -->
+    <view class="goods-image">
+      <image src="{{item.imgUrl}}" mode="aspectFill" />
+      <!-- 标签 -->
+      <view class="goods-tags">
+        <view wx:if="{{item.isHot}}" class="tag hot">热门</view>
+        <view wx:if="{{item.isNew}}" class="tag new">新品</view>
+      </view>
+      <!-- 收藏按钮 -->
+      <van-icon
+        name="heart-o"
+        size="20"
+        class="collect-btn"
+        catchtap="collectGoods"
+        data-flowerid="{{item.flowerId}}"
+      />
+    </view>
+
+    <!-- 商品信息 -->
+    <view class="goods-info">
+      <view class="goods-name">{{item.goodName}}</view>
+      <view class="goods-desc">{{item.flowerLanguage}}</view>
+      <view class="goods-sales">销量 {{item.saleNum}}</view>
+      <view class="goods-price">
+        <text class="current-price">¥{{item.price}}</text>
+        <text class="original-price">¥{{item.originPrice}}</text>
+      </view>
+    </view>
+
+    <!-- 添加到购物车 -->
+    <van-button
+      type="primary"
+      size="small"
+      class="add-cart-btn"
+      catchtap="addToCart"
+      data-flowerid="{{item.flowerId}}"
+    >
+      加入购物车
+    </van-button>
+  </view>
+</view>
+
+<!-- 加载更多 -->
+<view wx:if="{{loading}}" class="loading-more">
+  <van-loading type="spinner" size="20" />
+  <text>加载中...</text>
+</view>
+
+<!-- 没有更多数据 -->
+<view wx:if="{{!loading && !pagination.hasMore && goodsList.length > 0}}" class="no-more">
+  <text>没有更多商品了</text>
+</view>
+
+<!-- 空状态 -->
+<view wx:if="{{!loading && goodsList.length === 0}}" class="empty-state">
+  <van-icon name="goods-o" size="60" color="#ccc" />
+  <text>暂无商品</text>
+</view>
+
+<!-- 筛选面板 -->
+<van-popup
+  show="{{showFilterPanel}}"
+  position="bottom"
+  round
+  custom-style="height: 60%"
+  bind:close="closeFilterPanel"
+>
+  <view class="filter-panel">
+    <view class="panel-header">
+      <text class="panel-title">筛选条件</text>
+      <van-button size="small" bindtap="resetFilters">重置</van-button>
+    </view>
+
+    <view class="panel-content">
+      <!-- 热门筛选 -->
+      <view class="filter-group">
+        <view class="filter-title">热门商品</view>
+        <van-checkbox checked="{{filters.isHot}}" bind:change="toggleHotFilter">
+          只看热门
+        </van-checkbox>
+      </view>
+
+      <!-- 新品筛选 -->
+      <view class="filter-group">
+        <view class="filter-title">新品上市</view>
+        <van-checkbox checked="{{filters.isNew}}" bind:change="toggleNewFilter">
+          只看新品
+        </van-checkbox>
+      </view>
+
+      <!-- 价格范围 -->
+      <view class="filter-group">
+        <view class="filter-title">价格范围</view>
+        <view class="price-range">
+          <text>¥{{filters.priceRange[0]}}</text>
+          <van-slider
+            range
+            min="0"
+            max="500"
+            value="{{filters.priceRange}}"
+            bind:change="onPriceRangeChange"
+          />
+          <text>¥{{filters.priceRange[1]}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="panel-footer">
+      <van-button size="large" bindtap="applyFilters">
+        确定
+      </van-button>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 排序面板 -->
+<van-popup
+  show="{{showSortPanel}}"
+  position="bottom"
+  round
+  custom-style="height: 40%"
+  bind:close="closeSortPanel"
+>
+  <view class="sort-panel">
+    <view class="panel-header">
+      <text class="panel-title">排序方式</text>
+    </view>
+
+    <view class="panel-content">
+      <view
+        wx:for="{{sortOptions}}"
+        wx:key="id"
+        class="sort-item {{filters.sort === item.id ? 'active' : ''}}"
+        bindtap="switchSort"
+        data-sort="{{item.id}}"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+</van-popup>
