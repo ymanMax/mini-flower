@@ -1,0 +1,52 @@
+<!--pages/identify/index.wxml-->
+<view class="identify-page">
+  <van-nav-bar
+    title="花卉识别"
+    left-arrow
+    bind:click-left="onBack"
+  />
+
+  <view class="identify-content">
+    <view class="upload-section">
+      <view class="upload-area" wx:if="{{!selectedImage}}" bindtap="chooseImage">
+        <van-icon name="photograph" size="60" color="#999" />
+        <view class="upload-text">点击上传花卉图片</view>
+        <view class="upload-hint">支持 JPG、PNG 格式，最大 5MB</view>
+      </view>
+      <view class="image-preview" wx:if="{{selectedImage}}">
+        <van-image src="{{selectedImage}}" mode="aspectFit" class="preview-image" />
+        <view class="image-actions">
+          <van-button type="default" round class="action-btn" bindtap="chooseImage">
+            重新选择
+          </van-button>
+          <van-button type="primary" round class="action-btn" bindtap="identifyFlower">
+            开始识别
+          </van-button>
+        </view>
+      </view>
+    </view>
+
+    <view class="identify-result" wx:if="{{identifyResult}}">
+      <view class="result-header">
+        <van-icon name="success" size="40" color="#07c160" />
+        <view class="result-title">识别成功</view>
+      </view>
+      <view class="result-content">
+        <van-image src="{{identifyResult.image}}" mode="aspectFill" class="result-image" />
+        <view class="result-info">
+          <view class="flower-name">{{identifyResult.name}}</view>
+          <view class="flower-confidence">相似度：{{identifyResult.confidence}}%</view>
+          <view class="flower-desc">{{identifyResult.desc}}</view>
+        </view>
+      </view>
+      <view class="result-actions">
+        <van-button type="primary" round class="action-btn" bindtap="viewDetail">
+          查看详情
+        </van-button>
+        <van-button type="default" round class="action-btn" bindtap="saveToDiary">
+          保存到日记
+        </van-button>
+      </view>
+    </view>
+  </view>
+</view>

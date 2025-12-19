@@ -1,0 +1,45 @@
+<!--pages/diary/index.wxml-->
+<view class="diary-index">
+  <van-nav-bar
+    title="花卉日记"
+    left-arrow
+    bind:click-left="onBack"
+  />
+
+  <view class="diary-header">
+    <van-button type="primary" round class="add-btn" bindtap="addDiary">
+      添加日记
+    </van-button>
+  </view>
+
+  <view class="diary-list">
+    <view class="diary-item" wx:for="{{diaries}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <view class="diary-images" wx:if="{{item.images.length > 0}}">
+        <van-image
+          wx:for="{{item.images}}"
+          wx:for-item="image"
+          wx:key="index"
+          src="{{image}}"
+          mode="aspectFill"
+          class="diary-image"
+        />
+      </view>
+      <view class="diary-content">
+        <view class="diary-title">{{item.title}}</view>
+        <view class="diary-date">{{item.date}}</view>
+        <view class="diary-desc">{{item.desc}}</view>
+        <view class="diary-tags">
+          <van-tag wx:for="{{item.tags}}" wx:key="index" type="primary" size="small">
+            {{item}}
+          </van-tag>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{diaries.length == 0}}" class="empty-state">
+      <van-empty description="您还没有写日记" />
+      <van-button type="primary" round class="empty-add-btn" bindtap="addDiary">
+        添加第一篇日记
+      </van-button>
+    </view>
+  </view>
+</view>

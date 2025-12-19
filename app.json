@@ -4,7 +4,14 @@
     "pages/my/my",
     "pages/cart/cart",
     "pages/detail/detail",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/knowledge/base",
+    "pages/knowledge/detail",
+    "pages/community/index",
+    "pages/community/detail",
+    "pages/identify/index",
+    "pages/diary/index",
+    "pages/diary/detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

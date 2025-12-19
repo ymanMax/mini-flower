@@ -1,0 +1,106 @@
+<!--pages/community/index.wxml-->
+<view class="community-index">
+  <van-search
+    value="{{searchValue}}"
+    placeholder="搜索社区问题"
+    bind:search="onSearch"
+    class="search-bar"
+  />
+
+  <view class="community-header">
+    <van-button type="primary" round class="ask-btn" bindtap="goToAsk">
+      我要提问
+    </van-button>
+  </view>
+
+  <van-tabs active="{{activeTab}}" bind:change="onTabChange">
+    <van-tab title="最新">
+      <view class="question-list">
+        <view class="question-item" wx:for="{{latestQuestions}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+          <view class="question-header">
+            <van-image src="{{item.user.avatar}}" mode="aspectFill" class="user-avatar" />
+            <view class="user-info">
+              <view class="user-name">{{item.user.name}}</view>
+              <view class="post-time">{{item.postTime}}</view>
+            </view>
+            <van-tag wx:if="{{item.isHot}}" type="danger">热门</van-tag>
+          </view>
+          <view class="question-content">
+            <view class="question-title">{{item.title}}</view>
+            <view class="question-desc">{{item.desc}}</view>
+          </view>
+          <view class="question-footer">
+            <view class="footer-item">
+              <van-icon name="eye-o" size="16" color="#999" />
+              <text class="footer-text">{{item.views}}</text>
+            </view>
+            <view class="footer-item">
+              <van-icon name="chat-o" size="16" color="#999" />
+              <text class="footer-text">{{item.comments}}</text>
+            </view>
+            <view class="footer-item">
+              <van-icon name="good-job-o" size="16" color="#999" />
+              <text class="footer-text">{{item.likes}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+
+    <van-tab title="热门">
+      <view class="question-list">
+        <view class="question-item" wx:for="{{hotQuestions}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+          <view class="question-header">
+            <van-image src="{{item.user.avatar}}" mode="aspectFill" class="user-avatar" />
+            <view class="user-info">
+              <view class="user-name">{{item.user.name}}</view>
+              <view class="post-time">{{item.postTime}}</view>
+            </view>
+            <van-tag type="danger">热门</van-tag>
+          </view>
+          <view class="question-content">
+            <view class="question-title">{{item.title}}</view>
+            <view class="question-desc">{{item.desc}}</view>
+          </view>
+          <view class="question-footer">
+            <view class="footer-item">
+              <van-icon name="eye-o" size="16" color="#999" />
+              <text class="footer-text">{{item.views}}</text>
+            </view>
+            <view class="footer-item">
+              <van-icon name="chat-o" size="16" color="#999" />
+              <text class="footer-text">{{item.comments}}</text>
+            </view>
+            <view class="footer-item">
+              <van-icon name="good-job-o" size="16" color="#999" />
+              <text class="footer-text">{{item.likes}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+
+    <van-tab title="我的">
+      <view class="my-questions">
+        <view class="question-item" wx:for="{{myQuestions}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+          <view class="question-content">
+            <view class="question-title">{{item.title}}</view>
+            <view class="question-desc">{{item.desc}}</view>
+          </view>
+          <view class="question-footer">
+            <view class="footer-item">
+              <van-icon name="chat-o" size="16" color="#999" />
+              <text class="footer-text">{{item.comments}}条评论</text>
+            </view>
+            <view class="footer-item">
+              <text class="status-text">{{item.status}}</text>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{myQuestions.length == 0}}" class="empty-state">
+          <van-empty description="您还没有提问" />
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

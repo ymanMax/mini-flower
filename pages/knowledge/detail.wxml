@@ -1,0 +1,49 @@
+<!--pages/knowledge/detail.wxml-->
+<view class="knowledge-detail">
+  <van-image src="{{flower.image}}" mode="aspectFill" class="flower-image" />
+  <view class="flower-info">
+    <view class="flower-name">{{flower.name}}</view>
+    <view class="flower-desc">{{flower.desc}}</view>
+  </view>
+
+  <van-tabs active="{{activeTab}}" bind:change="onTabChange" class="detail-tabs">
+    <van-tab title="基本信息">
+      <view class="info-content">
+        <van-cell-group inset>
+          <van-cell title="科属" value="{{flower.family}}" />
+          <van-cell title="原产地" value="{{flower.origin}}" />
+          <van-cell title="花期" value="{{flower.bloomingSeason}}" />
+          <van-cell title="适宜温度" value="{{flower.temperature}}" />
+        </van-cell-group>
+      </view>
+    </van-tab>
+
+    <van-tab title="养护指南">
+      <view class="care-content">
+        <van-collapse value="{{collapseValues}}" bind:change="onCollapseChange">
+          <van-collapse-item title="浇水" name="watering">
+            <view class="collapse-content">{{flower.care.watering}}</view>
+          </van-collapse-item>
+          <van-collapse-item title="光照" name="light">
+            <view class="collapse-content">{{flower.care.light}}</view>
+          </van-collapse-item>
+          <van-collapse-item title="施肥" name="fertilizer">
+            <view class="collapse-content">{{flower.care.fertilizer}}</view>
+          </van-collapse-item>
+          <van-collapse-item title="土壤" name="soil">
+            <view class="collapse-content">{{flower.care.soil}}</view>
+          </van-collapse-item>
+        </van-collapse>
+      </view>
+    </van-tab>
+
+    <van-tab title="常见问题">
+      <view class="faq-content">
+        <view class="faq-item" wx:for="{{flower.faqs}}" wx:key="id">
+          <view class="faq-question">{{item.question}}</view>
+          <view class="faq-answer">{{item.answer}}</view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

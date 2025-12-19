@@ -1,0 +1,66 @@
+<!--pages/diary/add.wxml-->
+<view class="add-diary">
+  <van-nav-bar
+    title="添加日记"
+    left-arrow
+    bind:click-left="onBack"
+  />
+
+  <view class="add-content">
+    <van-cell-group>
+      <van-field
+        value="{{title}}"
+        placeholder="请输入日记标题"
+        bind:change="onTitleChange"
+        label="日记标题"
+        required
+      />
+
+      <van-field
+        value="{{content}}"
+        placeholder="请写下您的花卉养护记录、心得或感悟..."
+        bind:change="onContentChange"
+        label="日记内容"
+        type="textarea"
+        rows="8"
+        required
+      />
+
+      <van-field
+        value="{{flowerName}}"
+        placeholder="请输入花卉名称"
+        bind:change="onFlowerNameChange"
+        label="花卉名称"
+      />
+
+      <view class="image-upload">
+        <view class="upload-title">上传图片（可选）</view>
+        <van-uploader
+          file-list="{{fileList}}"
+          multiple
+          bind:after-read="afterRead"
+          bind:delete="deleteImage"
+        />
+      </view>
+
+      <van-field
+        value="{{tagsInput}}"
+        placeholder="请输入标签，多个标签用逗号分隔"
+        bind:change="onTagsInputChange"
+        label="标签"
+      />
+    </van-cell-group>
+
+    <view class="submit-btn-wrapper">
+      <van-button
+        type="primary"
+        round
+        class="submit-btn"
+        bindtap="onSubmit"
+        disabled="{{!canSubmit}}"
+      >
+        保存日记
+      </van-button>
+    </view>
+  </view>
+</view>
