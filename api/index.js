@@ -6,7 +6,13 @@ import {
   preOrderData,
   preOrderDetailData,
   userLoginData,
-  orderPayData
+  orderPayData,
+  knowledgeData,
+  flowerDetailData,
+  communityData,
+  questionDetailData,
+  diaryData,
+  diaryDetailData
 } from './mockData'
 
 // 模拟异步请求延迟
@@ -152,5 +158,109 @@ export const orderRequest = {
   // 创建订单
   createOrder() {
     return mockDelay(orderPayData);
+  }
+}
+
+// 花卉知识库请求
+export const knowledgeRequest = {
+  // 获取知识库数据
+  getKnowledgeData() {
+    return mockDelay(knowledgeData);
+  },
+
+  // 获取花卉详情
+  getFlowerDetail(params) {
+    const flowerId = params?.id;
+    const detailData = {
+      ...flowerDetailData,
+      flower: {
+        ...flowerDetailData.flower,
+        id: flowerId || 1
+      }
+    };
+    return mockDelay(detailData);
+  }
+}
+
+// 社区问答请求
+export const communityRequest = {
+  // 获取社区数据
+  getCommunityData() {
+    return mockDelay(communityData);
+  },
+
+  // 获取问题详情
+  getQuestionDetail(params) {
+    const questionId = params?.id;
+    const detailData = {
+      ...questionDetailData,
+      question: {
+        ...questionDetailData.question,
+        id: questionId || 1
+      }
+    };
+    return mockDelay(detailData);
+  },
+
+  // 提交问题
+  submitQuestion(params) {
+    return mockDelay({ code: 666, message: '提交成功' });
+  },
+
+  // 提交回答
+  submitAnswer(params) {
+    return mockDelay({ code: 666, message: '回答成功' });
+  }
+}
+
+// 花卉日记请求
+export const diaryRequest = {
+  // 获取日记列表
+  getDiaryList() {
+    return mockDelay(diaryData);
+  },
+
+  // 获取日记详情
+  getDiaryDetail(params) {
+    const diaryId = params?.id;
+    const detailData = {
+      ...diaryDetailData,
+      diary: {
+        ...diaryDetailData.diary,
+        id: diaryId || 1
+      }
+    };
+    return mockDelay(detailData);
+  },
+
+  // 添加日记
+  addDiary(params) {
+    return mockDelay({ code: 666, message: '添加成功' });
+  },
+
+  // 编辑日记
+  editDiary(params) {
+    return mockDelay({ code: 666, message: '编辑成功' });
+  },
+
+  // 删除日记
+  deleteDiary(params) {
+    return mockDelay({ code: 666, message: '删除成功' });
+  }
+}
+
+// 花卉识别请求
+export const identifyRequest = {
+  // 识别花卉
+  identifyFlower(params) {
+    return mockDelay({
+      code: 666,
+      result: {
+        image: params?.image || '/img/rose.jpg',
+        name: '玫瑰',
+        confidence: 95,
+        desc: '玫瑰是蔷薇科蔷薇属植物，是世界著名的观赏花卉之一。'
+      }
+    });
   }
 }

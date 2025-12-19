@@ -1,0 +1,45 @@
+<!--pages/diary/detail.wxml-->
+<view class="diary-detail">
+  <van-nav-bar
+    title="日记详情"
+    left-arrow
+    bind:click-left="onBack"
+  />
+
+  <view class="diary-content">
+    <view class="diary-title">{{diary.title}}</view>
+    <view class="diary-date">{{diary.date}}</view>
+
+    <view class="diary-images" wx:if="{{diary.images.length > 0}}">
+      <van-image
+        wx:for="{{diary.images}}"
+        wx:key="index"
+        src="{{item}}"
+        mode="aspectFill"
+        class="diary-image"
+        bindtap="previewImage"
+        data-index="{{index}}"
+      />
+    </view>
+
+    <view class="diary-text">{{diary.desc}}</view>
+
+    <view class="diary-tags" wx:if="{{diary.tags.length > 0}}">
+      <view class="tags-title">标签</view>
+      <view class="tags-list">
+        <van-tag wx:for="{{diary.tags}}" wx:key="index" type="primary">
+          {{item}}
+        </van-tag>
+      </view>
+    </view>
+  </view>
+
+  <view class="diary-actions">
+    <van-button type="default" round class="action-btn" bindtap="editDiary">
+      编辑
+    </van-button>
+    <van-button type="danger" round class="action-btn" bindtap="deleteDiary">
+      删除
+    </van-button>
+  </view>
+</view>

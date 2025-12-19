@@ -1,0 +1,91 @@
+<!--pages/community/detail.wxml-->
+<view class="question-detail">
+  <van-nav-bar
+    title="问题详情"
+    left-arrow
+    bind:click-left="onBack"
+  />
+
+  <view class="question-content">
+    <view class="question-header">
+      <van-image src="{{question.user.avatar}}" mode="aspectFill" class="user-avatar" />
+      <view class="user-info">
+        <view class="user-name">{{question.user.name}}</view>
+        <view class="post-time">{{question.postTime}}</view>
+      </view>
+    </view>
+
+    <view class="question-title">{{question.title}}</view>
+    <view class="question-desc">{{question.desc}}</view>
+
+    <view class="question-images" wx:if="{{question.images.length > 0}}">
+      <van-image
+        wx:for="{{question.images}}"
+        wx:key="index"
+        src="{{item}}"
+        mode="aspectFill"
+        class="question-image"
+        bindtap="previewImage"
+        data-index="{{index}}"
+      />
+    </view>
+
+    <view class="question-footer">
+      <view class="footer-item" bindtap="onLike">
+        <van-icon name="{{isLiked ? 'good-job' : 'good-job-o'}}" size="20" color="{{isLiked ? '#c03131' : '#999'}}" />
+        <text class="footer-text">{{question.likes}}</text>
+      </view>
+      <view class="footer-item">
+        <van-icon name="eye-o" size="20" color="#999" />
+        <text class="footer-text">{{question.views}}</text>
+      </view>
+      <view class="footer-item">
+        <van-icon name="chat-o" size="20" color="#999" />
+        <text class="footer-text">{{question.comments}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="answers-section">
+    <view class="answers-title">共 {{question.comments}} 条回答</view>
+
+    <view class="answer-item" wx:for="{{question.answers}}" wx:key="id">
+      <view class="answer-header">
+        <van-image src="{{item.user.avatar}}" mode="aspectFill" class="user-avatar" />
+        <view class="user-info">
+          <view class="user-name">{{item.user.name}}</view>
+          <view class="post-time">{{item.postTime}}</view>
+        </view>
+        <van-tag wx:if="{{item.isBest}}" type="primary">最佳答案</van-tag>
+      </view>
+      <view class="answer-content">{{item.content}}</view>
+      <view class="answer-footer">
+        <view class="footer-item" bindtap="onAnswerLike" data-id="{{item.id}}">
+          <van-icon name="{{item.isLiked ? 'good-job' : 'good-job-o'}}" size="16" color="{{item.isLiked ? '#c03131' : '#999'}}" />
+          <text class="footer-text">{{item.likes}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="comment-input-section">
+    <van-field
+      value="{{commentContent}}"
+      placeholder="写下您的回答..."
+      bind:change="onCommentChange"
+      type="textarea"
+      rows="2"
+      border="{{false}}"
+      class="comment-input"
+    />
+    <van-button
+      type="primary"
+      round
+      class="comment-submit-btn"
+      bindtap="onCommentSubmit"
+      disabled="{{!commentContent.trim()}}"
+    >
+      提交
+    </van-button>
+  </view>
+</view>

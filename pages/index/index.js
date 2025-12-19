@@ -9,6 +9,34 @@ Page({
     // 轮播图数据
     swiperImg: [],
 
+    // 功能导航列表
+    functionList: [
+      {
+        id: 1,
+        name: '花卉知识库',
+        icon: '/img/knowledge.png',
+        url: '/pages/knowledge/base'
+      },
+      {
+        id: 2,
+        name: '问答社区',
+        icon: '/img/community.png',
+        url: '/pages/community/index'
+      },
+      {
+        id: 3,
+        name: '花卉识别',
+        icon: '/img/identify.png',
+        url: '/pages/identify/index'
+      },
+      {
+        id: 4,
+        name: '花卉日记',
+        icon: '/img/diary.png',
+        url: '/pages/diary/index'
+      }
+    ],
+
     // 渲染的商品数据
     goodsList: [],
 
@@ -102,5 +130,17 @@ Page({
   // 用户上拉触底事件
   onReachBottom() {
     this.getGoodsListData();
+  },
+
+  // 跳转到对应功能页面
+  goToFunction: function (event) {
+    const id = event.currentTarget.dataset.id;
+    const functionItem = this.data.functionList.find(item => item.id === id);
+
+    if (functionItem && functionItem.url) {
+      wx.navigateTo({
+        url: functionItem.url
+      });
+    }
   }
 })

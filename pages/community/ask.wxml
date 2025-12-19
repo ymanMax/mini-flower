@@ -1,0 +1,61 @@
+<!--pages/community/ask.wxml-->
+<view class="ask-page">
+  <van-nav-bar
+    title="我要提问"
+    left-arrow
+    bind:click-left="onBack"
+  />
+
+  <view class="ask-content">
+    <van-cell-group>
+      <van-field
+        value="{{title}}"
+        placeholder="请输入问题标题"
+        bind:change="onTitleChange"
+        label="问题标题"
+        required
+      />
+
+      <van-field
+        value="{{content}}"
+        placeholder="请详细描述您的问题，包括花卉种类、症状、养护环境等信息"
+        bind:change="onContentChange"
+        label="问题描述"
+        type="textarea"
+        rows="6"
+        required
+      />
+
+      <van-field
+        value="{{category}}"
+        placeholder="请选择问题分类"
+        bind:tap="showCategoryPicker"
+        label="问题分类"
+        required
+        right-icon="arrow"
+      />
+
+      <view class="image-upload">
+        <view class="upload-title">上传图片（可选）</view>
+        <van-uploader
+          file-list="{{fileList}}"
+          multiple
+          bind:after-read="afterRead"
+          bind:delete="deleteImage"
+        />
+      </view>
+    </van-cell-group>
+
+    <view class="submit-btn-wrapper">
+      <van-button
+        type="primary"
+        round
+        class="submit-btn"
+        bindtap="onSubmit"
+        disabled="{{!canSubmit}}"
+      >
+        提交问题
+      </van-button>
+    </view>
+  </view>
+</view>

@@ -8,6 +8,14 @@
   </block>
 </swiper>
 
+<!-- 功能导航 -->
+<view class="function-nav wp-100 bc-fff mb-10">
+  <view class="nav-item" wx:for="{{functionList}}" wx:key="id" bindtap="goToFunction" data-id="{{item.id}}">
+    <van-image src="{{item.icon}}" mode="aspectFit" class="nav-icon" />
+    <view class="nav-name">{{item.name}}</view>
+  </view>
+</view>
+
 <view class="goodsList wp-100 bc-fff flex jc-sa fw-w mb-10">
   <navigator wx:for="{{goodsList}}" wx:key="flowerId" url="/pages/detail/detail?flowerId={{item.flowerId}}"
     hover-class="navigator-hover" class="goods-item mb-10">

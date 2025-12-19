@@ -1,0 +1,44 @@
+<!--pages/knowledge/base.wxml-->
+<van-search
+  value="{{searchValue}}"
+  placeholder="搜索花卉养护知识"
+  bind:search="onSearch"
+  class="search-bar"
+/>
+
+<van-tabs active="{{activeTab}}" bind:change="onTabChange">
+  <van-tab title="热门花卉">
+    <view class="flower-category">
+      <view class="category-item" wx:for="{{hotFlowers}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+        <van-image src="{{item.image}}" mode="aspectFill" class="category-image" />
+        <view class="category-name">{{item.name}}</view>
+        <view class="category-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </van-tab>
+
+  <van-tab title="养护分类">
+    <view class="care-category">
+      <van-cell-group>
+        <van-cell
+          wx:for="{{careCategories}}"
+          wx:key="id"
+          title="{{item.name}}"
+          arrow="horizontal"
+          bindtap="goToCareDetail"
+          data-id="{{item.id}}"
+        />
+      </van-cell-group>
+    </view>
+  </van-tab>
+
+  <van-tab title="常见问题">
+    <view class="faq-list">
+      <view class="faq-item" wx:for="{{faqs}}" wx:key="id" bindtap="goToFaqDetail" data-id="{{item.id}}">
+        <view class="faq-question">{{item.question}}</view>
+        <view class="faq-answer">{{item.answer}}</view>
+        <van-icon name="arrow" size="16" color="#999" />
+      </view>
+    </view>
+  </van-tab>
+</van-tabs>
