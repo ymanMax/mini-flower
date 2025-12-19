@@ -1,1 +1,37 @@
-.iswiper-item{height:200px;border:1px solid}.goodsList{padding:10px;box-sizing:border-box}.goodsList .goods-item{width:45%;border:1px solid #eee;border-radius:5px}.goodsList .goods-item .goods-info{padding:0 10px;box-sizing:border-box}.goodsList .goods-item .goods-info .goods-title{max-width:175px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.goodsList .goods-item .goods-info .price-info{box-sizing:border-box}.goodsList .goods-item .goods-info .price-info .price{font-weight:bold;color:#f40}.goodsList .goods-item .goods-info .price-info .originPrice{text-decoration:line-through}.footer{padding:10px;text-align:center}
+.iswiper-item{height:200px;border:1px solid}
+
+.service-category {
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.category-title {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.service-list {
+  padding: 0 10px;
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  margin-bottom: 15px;
+}
+
+.service-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-bottom: 8rpx;
+}
+
+.service-name {
+  color: #666;
+  text-align: center;
+}
+
+.goodsList{padding:10px;box-sizing:border-box}.goodsList .goods-item{width:45%;border:1px solid #eee;border-radius:5px}.goodsList .goods-item .goods-info{padding:0 10px;box-sizing:border-box}.goodsList .goods-item .goods-info .goods-title{max-width:175px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.goodsList .goods-item .goods-info .price-info{box-sizing:border-box}.goodsList .goods-item .goods-info .price-info .price{font-weight:bold;color:#f40}.goodsList .goods-item .goods-info .price-info .originPrice{text-decoration:line-through}.footer{padding:10px;text-align:center}

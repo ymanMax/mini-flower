@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="page-header">
+    <text class="title">花艺设计服务</text>
+    <text class="subtitle">专业的花艺设计团队，为您打造独特的视觉体验</text>
+  </view>
+
+  <view class="design-list">
+    <view wx:for="{{designServices}}" wx:key="designId" class="design-item">
+      <image src="{{item.imgUrl}}" mode="widthFix" class="design-image" />
+      <view class="design-info">
+        <view class="design-title">{{item.serviceName}}</view>
+        <view class="design-meta">
+          <view class="price-info">
+            <text class="price">￥{{item.price}}</text>
+          </view>
+          <view class="style-info">
+            <text class="style-tag">风格：{{item.style}}</text>
+          </view>
+        </view>
+        <view class="design-desc">{{item.description}}</view>
+        <view class="design-items">
+          <text class="items-label">服务内容：</text>
+          <view class="items-list">
+            <text wx:for="{{item.items}}" wx:key="index" class="item">{{index + 1}}. {{item}}</text>
+          </view>
+        </view>
+        <button class="order-btn" bindtap="orderService" data-designid="{{item.designId}}">立即定制</button>
+      </view>
+    </view>
+  </view>
+</view>

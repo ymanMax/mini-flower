@@ -282,6 +282,164 @@ const orderPayData = {
   }
 };
 
+// 租赁服务数据
+const rentServicesData = {
+  code: 666,
+  rentServices: [
+    {
+      rentId: 1,
+      serviceName: '长期花卉租赁',
+      price: 299.00,
+      period: '月',
+      imgUrl: '/img/bg.png',
+      description: '适合办公室、酒店等长期租赁，提供定期养护服务',
+      minPeriod: 3,
+      plants: ['绿萝', '发财树', '散尾葵'],
+      features: ['免费配送', '定期养护', '品种更换']
+    },
+    {
+      rentId: 2,
+      serviceName: '短期花卉租赁',
+      price: 99.00,
+      period: '天',
+      imgUrl: '/img/bg.png',
+      description: '适合活动、展会等短期租赁，灵活便捷',
+      minPeriod: 1,
+      plants: ['玫瑰', '百合', '郁金香'],
+      features: ['快速响应', '多样选择', '专业布置']
+    },
+    {
+      rentId: 3,
+      serviceName: '盆栽租赁套餐',
+      price: 499.00,
+      period: '月',
+      imgUrl: '/img/bg.png',
+      description: '组合盆栽租赁，打造绿色空间',
+      minPeriod: 2,
+      plants: ['多肉组合', '蕨类植物', '观叶植物'],
+      features: ['定制组合', '专业设计', '全程养护']
+    }
+  ]
+};
+
+// 企业绿植定制数据
+const enterpriseServicesData = {
+  code: 666,
+  enterpriseServices: [
+    {
+      enterpriseId: 1,
+      serviceName: '办公室绿植定制',
+      price: 1999.00,
+      area: '50-100㎡',
+      imgUrl: '/img/bg.png',
+      description: '根据办公室空间定制绿植方案',
+      plants: 10,
+     养护: '每月2次'
+    },
+    {
+      enterpriseId: 2,
+      serviceName: '企业绿植养护',
+      price: 599.00,
+      area: '任意面积',
+      imgUrl: '/img/bg.png',
+      description: '专业养护团队，确保植物健康生长',
+      plants: '不限',
+     养护: '按需服务'
+    },
+    {
+      enterpriseId: 3,
+      serviceName: '大型绿植工程',
+      price: 9999.00,
+      area: '1000㎡以上',
+      imgUrl: '/img/bg.png',
+      description: '商场、酒店等大型空间绿植规划',
+      plants: 50,
+     养护: '每周1次'
+    }
+  ]
+};
+
+// 花艺设计服务数据
+const designServicesData = {
+  code: 666,
+  designServices: [
+    {
+      designId: 1,
+      serviceName: '婚礼花艺设计',
+      price: 5999.00,
+      style: '浪漫梦幻',
+      imgUrl: '/img/bg.png',
+      description: '为您打造完美的婚礼花艺布置',
+      items: ['新娘手捧花', '婚车装饰', '舞台布置']
+    },
+    {
+      designId: 2,
+      serviceName: '商务花艺设计',
+      price: 2999.00,
+      style: '简约大气',
+      imgUrl: '/img/bg.png',
+      description: '提升企业形象的商务花艺',
+      items: ['前台装饰', '会议桌花', '开业花篮']
+    },
+    {
+      designId: 3,
+      serviceName: '家居花艺设计',
+      price: 1299.00,
+      style: '温馨自然',
+      imgUrl: '/img/bg.png',
+      description: '打造舒适宜居的家居花艺环境',
+      items: ['客厅花艺', '餐厅布置', '卧室点缀']
+    }
+  ]
+};
+
+// 节日花礼数据
+const festivalGiftsData = {
+  code: 666,
+  festivalGifts: [
+    {
+      giftId: 1,
+      giftName: '情人节玫瑰礼盒',
+      price: 399.00,
+      festival: '情人节',
+      imgUrl: '/img/bg.png',
+      description: '精选红玫瑰，表达浓浓爱意',
+      delivery: '全国配送',
+     预售: true
+    },
+    {
+      giftId: 2,
+      giftName: '中秋节赏月花礼',
+      price: 299.00,
+      festival: '中秋节',
+      imgUrl: '/img/bg.png',
+      description: '团圆佳节的精美花礼',
+      delivery: '同城配送',
+     预售: false
+    },
+    {
+      giftId: 3,
+      giftName: '新年祈福花束',
+      price: 499.00,
+      festival: '春节',
+      imgUrl: '/img/bg.png',
+      description: '新年新气象，吉祥如意',
+      delivery: '全国配送',
+     预售: true
+    },
+    {
+      giftId: 4,
+      giftName: '教师节感恩花礼',
+      price: 199.00,
+      festival: '教师节',
+      imgUrl: '/img/bg.png',
+      description: '感谢恩师，师恩难忘',
+      delivery: '同城配送',
+     预售: false
+    }
+  ]
+};
+
 // 导出所有mock数据
 module.exports = {
   swiperData,
@@ -291,5 +449,9 @@ module.exports = {
   preOrderData,
   preOrderDetailData,
   userLoginData,
-  orderPayData
+  orderPayData,
+  rentServicesData,
+  enterpriseServicesData,
+  designServicesData,
+  festivalGiftsData
 };

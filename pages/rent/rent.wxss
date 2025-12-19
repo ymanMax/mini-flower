@@ -1,0 +1,119 @@
+.container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 20rpx;
+}
+
+.page-header {
+  background-color: #fff;
+  padding: 30rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.rent-list {
+  padding: 0 20rpx;
+}
+
+.rent-item {
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.rent-image {
+  width: 100%;
+  height: 300rpx;
+  object-fit: cover;
+}
+
+.rent-info {
+  padding: 30rpx;
+}
+
+.rent-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.rent-price {
+  margin-bottom: 20rpx;
+}
+
+.price {
+  font-size: 32rpx;
+  color: #c03131;
+  font-weight: bold;
+}
+
+.period {
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 10rpx;
+}
+
+.rent-desc {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20rpx;
+}
+
+.rent-features {
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.feature-tag {
+  background-color: #f0f0f0;
+  color: #666;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+
+.rent-plants {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+}
+
+.label {
+  color: #999;
+}
+
+.plant {
+  color: #666;
+}
+
+.order-btn {
+  background-color: #c03131;
+  color: #fff;
+  border-radius: 50rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.order-btn::after {
+  border: none;
+}

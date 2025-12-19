@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="page-header">
+    <text class="title">企业绿植定制</text>
+    <text class="subtitle">专业的企业绿植解决方案，打造绿色办公环境</text>
+  </view>
+
+  <view class="enterprise-list">
+    <view wx:for="{{enterpriseServices}}" wx:key="enterpriseId" class="enterprise-item">
+      <image src="{{item.imgUrl}}" mode="widthFix" class="enterprise-image" />
+      <view class="enterprise-info">
+        <view class="enterprise-title">{{item.serviceName}}</view>
+        <view class="enterprise-price">
+          <text class="price">￥{{item.price}}</text>
+          <text class="area">/{{item.area}}</text>
+        </view>
+        <view class="enterprise-desc">{{item.description}}</view>
+        <view class="enterprise-details">
+          <view class="detail-item">
+            <text class="detail-label">植物数量：</text>
+            <text class="detail-value">{{item.plants}}</text>
+          </view>
+          <view class="detail-item">
+            <text class="detail-label">养护服务：</text>
+            <text class="detail-value">{{item.养护}}</text>
+          </view>
+        </view>
+        <button class="order-btn" bindtap="orderService" data-enterpriseid="{{item.enterpriseId}}">立即咨询</button>
+      </view>
+    </view>
+  </view>
+</view>
