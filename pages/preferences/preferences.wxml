@@ -1,0 +1,87 @@
+<!--pages/preferences/preferences.wxml-->
+<view class="preferences-container">
+  <!-- 喜欢的颜色 -->
+  <view class="section">
+    <view class="section-title">喜欢的颜色</view>
+    <van-checkbox-group value="{{colorOptions}}" bind:change="onColorChange">
+      <view class="checkbox-row">
+        <van-checkbox wx:for="{{colorOptions}}" wx:key="value" name="{{item.value}}">
+          {{item.name}}
+        </van-checkbox>
+      </view>
+    </van-checkbox-group>
+  </view>
+
+  <!-- 喜欢的花卉类型 -->
+  <view class="section">
+    <view class="section-title">喜欢的花卉类型</view>
+    <van-checkbox-group value="{{typeOptions}}" bind:change="onTypeChange">
+      <view class="checkbox-row">
+        <van-checkbox wx:for="{{typeOptions}}" wx:key="value" name="{{item.value}}">
+          {{item.name}}
+        </van-checkbox>
+      </view>
+    </van-checkbox-group>
+  </view>
+
+  <!-- 价格范围 -->
+  <view class="section">
+    <view class="section-title">价格范围</view>
+    <view class="price-range">
+      <view class="price-text">{{priceRangeText}}</view>
+      <van-slider
+        range="{{true}}"
+        min="0"
+        max="500"
+        value="{{priceRange}}"
+        bind:change="onPriceRangeChange"
+      />
+    </view>
+  </view>
+
+  <!-- 养护难度 -->
+  <view class="section">
+    <view class="section-title">养护难度</view>
+    <van-radio-group value="{{careDifficulty}}" bind:change="onCareDifficultyChange">
+      <view class="radio-row">
+        <van-radio wx:for="{{careDifficultyOptions}}" wx:key="value" value="{{item.value}}">
+          {{item.name}}
+        </van-radio>
+      </view>
+    </van-radio-group>
+  </view>
+
+  <!-- 光照需求 -->
+  <view class="section">
+    <view class="section-title">光照需求</view>
+    <van-radio-group value="{{lightRequirement}}" bind:change="onLightRequirementChange">
+      <view class="radio-row">
+        <van-radio wx:for="{{lightRequirementOptions}}" wx:key="value" value="{{item.value}}">
+          {{item.name}}
+        </van-radio>
+      </view>
+    </van-radio-group>
+  </view>
+
+  <!-- 空间大小 -->
+  <view class="section">
+    <view class="section-title">空间大小</view>
+    <van-radio-group value="{{spaceSize}}" bind:change="onSpaceSizeChange">
+      <view class="radio-row">
+        <van-radio wx:for="{{spaceSizeOptions}}" wx:key="value" value="{{item.value}}">
+          {{item.name}}
+        </van-radio>
+      </view>
+    </van-radio-group>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="button-section">
+    <van-button type="primary" size="large" bindtap="savePreferences">
+      保存偏好
+    </van-button>
+    <van-button type="default" size="large" bindtap="resetPreferences" class="reset-button">
+      重置
+    </van-button>
+  </view>
+</view>

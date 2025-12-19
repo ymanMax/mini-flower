@@ -6,7 +6,14 @@ import {
   preOrderData,
   preOrderDetailData,
   userLoginData,
-  orderPayData
+  orderPayData,
+  // 个性化推荐系统数据
+  userProfileData,
+  flowerAttributesData,
+  personalizedRecommendationsData,
+  flowerMatchingSuggestionsData,
+  seasonalRecommendationsData,
+  spaceBasedRecommendationsData
 } from './mockData'
 
 // 模拟异步请求延迟
@@ -152,5 +159,48 @@ export const orderRequest = {
   // 创建订单
   createOrder() {
     return mockDelay(orderPayData);
+  }
+}
+
+// 个性化推荐系统API接口
+export const recommendationRequest = {
+  // 获取用户画像和偏好
+  getUserProfile(params) {
+    return mockDelay(userProfileData);
+  },
+
+  // 更新用户偏好
+  updateUserPreferences(params) {
+    return mockDelay({ code: 666, message: '更新成功' });
+  },
+
+  // 获取花卉详细属性
+  getFlowerAttributes(params) {
+    return mockDelay(flowerAttributesData);
+  },
+
+  // 获取个性化推荐
+  getPersonalizedRecommendations(params) {
+    return mockDelay(personalizedRecommendationsData);
+  },
+
+  // 获取花卉搭配建议
+  getFlowerMatchingSuggestions(params) {
+    return mockDelay(flowerMatchingSuggestionsData);
+  },
+
+  // 获取季节性推荐和养护提醒
+  getSeasonalRecommendations(params) {
+    return mockDelay(seasonalRecommendationsData);
+  },
+
+  // 获取基于空间大小的推荐
+  getSpaceBasedRecommendations(params) {
+    const spaceSize = params?.spaceSize || 'medium';
+    const filteredData = {
+      code: 666,
+      recommendations: spaceBasedRecommendationsData.recommendations[spaceSize] || []
+    };
+    return mockDelay(filteredData);
   }
 }

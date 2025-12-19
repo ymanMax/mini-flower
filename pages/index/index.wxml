@@ -8,6 +8,37 @@
   </block>
 </swiper>
 
+<!-- 个性化推荐模块 -->
+<view class="recommendation-section bc-fff wp-100 mb-10">
+  <view class="section-header flex jc-sb ai-c">
+    <view class="section-title fs-16 fc-333">个性化推荐</view>
+    <navigator url="/pages/matching/matching" hover-class="navigator-hover" class="more-link fs-12 fc-c03131">
+      查看更多搭配 →
+    </navigator>
+  </view>
+
+  <!-- 推荐卡片 -->
+  <view class="recommendation-cards flex jc-sa fw-w">
+    <view class="recommendation-card" bindtap="goToPreferences">
+      <image class="card-icon" src="/img/bg.png"></image>
+      <text class="card-title fs-14 fc-333">偏好设置</text>
+      <text class="card-desc fs-12 fc-666">定制您的个性化花卉推荐</text>
+    </view>
+
+    <view class="recommendation-card" bindtap="goToMatching">
+      <image class="card-icon" src="/img/bg.png"></image>
+      <text class="card-title fs-14 fc-333">搭配建议</text>
+      <text class="card-desc fs-12 fc-666">发现完美的花卉组合</text>
+    </view>
+
+    <view class="recommendation-card" bindtap="goToSeasonal">
+      <image class="card-icon" src="/img/bg.png"></image>
+      <text class="card-title fs-14 fc-333"> seasonal推荐</text>
+      <text class="card-desc fs-12 fc-666">当季热门花卉及养护 tips</text>
+    </view>
+  </view>
+</view>
+
 <view class="goodsList wp-100 bc-fff flex jc-sa fw-w mb-10">
   <navigator wx:for="{{goodsList}}" wx:key="flowerId" url="/pages/detail/detail?flowerId={{item.flowerId}}"
     hover-class="navigator-hover" class="goods-item mb-10">
