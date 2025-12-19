@@ -1,0 +1,241 @@
+/* 会员信息头部 */
+.member-header {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  color: #fff;
+  padding: 40rpx 30rpx;
+  display: flex;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.member-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.member-info {
+  flex: 1;
+}
+
+.member-level {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+
+.member-points {
+  font-size: 26rpx;
+  margin-bottom: 12rpx;
+}
+
+.member-points .growth-value {
+  margin-left: 30rpx;
+}
+
+.next-level {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* 标签页内容通用样式 */
+.info-content,
+.points-content,
+.exchange-content {
+  padding: 30rpx;
+  background: #fafafa;
+  min-height: 50vh;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+/* 会员权益 */
+.info-section {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.benefits-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30rpx;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  font-size: 26rpx;
+  color: #666;
+  width: calc(50% - 15rpx);
+}
+
+/* 积分记录 */
+.points-list {
+  background: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.points-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.points-item:last-child {
+  border-bottom: none;
+}
+
+.points-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.record-type {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.record-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.points-amount {
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.points-amount.positive {
+  color: #4cae4c;
+}
+
+.points-amount.negative {
+  color: #ff6b6b;
+}
+
+.empty-record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  gap: 20rpx;
+}
+
+.empty-record text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 积分兑换 */
+.exchange-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.exchange-item {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.goods-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.goods-image image {
+  width: 100%;
+  height: 100%;
+}
+
+.goods-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.goods-name {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 600;
+}
+
+.goods-points {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 26rpx;
+  color: #ff6b6b;
+}
+
+.goods-stock {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.exchange-btn {
+  flex-shrink: 0;
+}
+
+.empty-exchange {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  gap: 20rpx;
+}
+
+.empty-exchange text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 加载遮罩 */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  color: #fff;
+  font-size: 28rpx;
+}
+
+.loading-overlay text {
+  margin-top: 20rpx;
+}

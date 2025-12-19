@@ -88,6 +88,37 @@ Page({
     })
   },
 
+  // 跳转到收藏页面
+  goToCollect() {
+    wx.navigateTo({
+      url: '/pages/collect/collect'
+    });
+  },
+
+  // 跳转到订单列表页面
+  goToOrderList(e) {
+    let tab = '';
+    if (e && e.currentTarget && e.currentTarget.dataset.tab) {
+      tab = e.currentTarget.dataset.tab;
+    }
+
+    let url = '/pages/order/list/list';
+    if (tab) {
+      url += `?tab=${tab}`;
+    }
+
+    wx.navigateTo({
+      url: url
+    });
+  },
+
+  // 跳转到会员中心
+  goToMemberCenter() {
+    wx.navigateTo({
+      url: '/pages/member/member'
+    });
+  },
+
   // 登出
   logout() {
     wx.showModal({

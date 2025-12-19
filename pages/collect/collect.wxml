@@ -1,0 +1,65 @@
+<!-- 收藏商品列表 -->
+<view class="collect-list" wx:if="{{!isShowEmpty}}">
+  <view
+    wx:for="{{collectList}}"
+    wx:key="collectId"
+    class="collect-item"
+  >
+    <!-- 商品图片 -->
+    <view class="goods-image" bindtap="goToDetail" data-flowerid="{{item.flowerId}}">
+      <image src="{{item.imgUrl}}" mode="aspectFill" />
+    </view>
+
+    <!-- 商品信息 -->
+    <view class="goods-info">
+      <view class="goods-name" bindtap="goToDetail" data-flowerid="{{item.flowerId}}">
+        {{item.goodName}}
+      </view>
+      <view class="goods-desc">{{item.flowerLanguage}}</view>
+      <view class="goods-sales">销量 {{item.saleNum}} | 库存 {{item.stock}}</view>
+      <view class="goods-price">
+        <text class="current-price">¥{{item.price}}</text>
+        <text class="original-price">¥{{item.originPrice}}</text>
+      </view>
+      <view class="collect-time">收藏时间：{{item.collectTime}}</view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <van-button
+        type="primary"
+        size="small"
+        class="add-cart-btn"
+        bindtap="addToCart"
+        data-flowerid="{{item.flowerId}}"
+      >
+        加入购物车
+      </van-button>
+      <van-button
+        type="default"
+        size="small"
+        class="cancel-collect-btn"
+        bindtap="cancelCollect"
+        data-collectid="{{item.collectId}}"
+        data-index="{{index}}"
+      >
+        取消收藏
+      </van-button>
+    </view>
+  </view>
+</view>
+
+<!-- 空状态 -->
+<van-empty
+  wx:else
+  description="暂无收藏商品"
+  image="https://img.yzcdn.cn/vant/empty-image.png"
+>
+  <van-button type="primary" bindtap="goToProductList">去逛逛</van-button>
+</van-empty>
+
+<!-- 加载状态 -->
+<view wx:if="{{loading}}" class="loading-overlay">
+  <van-loading type="spinner" size="32" />
+  <text>加载中...</text>
+</view>
