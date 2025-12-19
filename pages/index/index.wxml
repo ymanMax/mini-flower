@@ -8,6 +8,29 @@
   </block>
 </swiper>
 
+<!-- 服务分类入口 -->
+<view class="service-category bc-fff mb-10">
+  <view class="category-title fc-333 fs-15 fw-b">特色服务</view>
+  <view class="service-list flex jc-sa fw-w">
+    <navigator url="/pages/rent/rent" class="service-item">
+      <image src="/img/bg.png" class="service-icon" />
+      <text class="service-name fs-12">花卉租赁</text>
+    </navigator>
+    <navigator url="/pages/enterprise/enterprise" class="service-item">
+      <image src="/img/bg.png" class="service-icon" />
+      <text class="service-name fs-12">企业定制</text>
+    </navigator>
+    <navigator url="/pages/design/design" class="service-item">
+      <image src="/img/bg.png" class="service-icon" />
+      <text class="service-name fs-12">花艺设计</text>
+    </navigator>
+    <navigator url="/pages/festival/festival" class="service-item">
+      <image src="/img/bg.png" class="service-icon" />
+      <text class="service-name fs-12">节日花礼</text>
+    </navigator>
+  </view>
+</view>
+
 <view class="goodsList wp-100 bc-fff flex jc-sa fw-w mb-10">
   <navigator wx:for="{{goodsList}}" wx:key="flowerId" url="/pages/detail/detail?flowerId={{item.flowerId}}"
     hover-class="navigator-hover" class="goods-item mb-10">

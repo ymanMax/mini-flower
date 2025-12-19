@@ -6,7 +6,11 @@ import {
   preOrderData,
   preOrderDetailData,
   userLoginData,
-  orderPayData
+  orderPayData,
+  rentServicesData,
+  enterpriseServicesData,
+  designServicesData,
+  festivalGiftsData
 } from './mockData'
 
 // 模拟异步请求延迟
@@ -152,5 +156,45 @@ export const orderRequest = {
   // 创建订单
   createOrder() {
     return mockDelay(orderPayData);
+  }
+}
+
+// 租赁服务请求
+export const rentRequest = {
+  /**
+   * 获取租赁服务列表
+   */
+  getRentServices() {
+    return mockDelay(rentServicesData);
+  }
+}
+
+// 企业定制服务请求
+export const enterpriseRequest = {
+  /**
+   * 获取企业定制服务列表
+   */
+  getEnterpriseServices() {
+    return mockDelay(enterpriseServicesData);
+  }
+}
+
+// 花艺设计服务请求
+export const designRequest = {
+  /**
+   * 获取花艺设计服务列表
+   */
+  getDesignServices() {
+    return mockDelay(designServicesData);
+  }
+}
+
+// 节日花礼服务请求
+export const festivalRequest = {
+  /**
+   * 获取节日花礼列表
+   */
+  getFestivalGifts() {
+    return mockDelay(festivalGiftsData);
   }
 }

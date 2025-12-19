@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="page-header">
+    <text class="title">花卉租赁服务</text>
+    <text class="subtitle">专业的花卉租赁解决方案，满足您的各种需求</text>
+  </view>
+
+  <view class="rent-list">
+    <view wx:for="{{rentServices}}" wx:key="rentId" class="rent-item">
+      <image src="{{item.imgUrl}}" mode="widthFix" class="rent-image" />
+      <view class="rent-info">
+        <view class="rent-title">{{item.serviceName}}</view>
+        <view class="rent-price">
+          <text class="price">￥{{item.price}}</text>
+          <text class="period">/{{item.period}}</text>
+        </view>
+        <view class="rent-desc">{{item.description}}</view>
+        <view class="rent-features">
+          <text wx:for="{{item.features}}" wx:key="index" class="feature-tag">{{item}}</text>
+        </view>
+        <view class="rent-plants">
+          <text class="label">包含植物：</text>
+          <text wx:for="{{item.plants}}" wx:key="index" class="plant">{{item}}{{index < item.plants.length - 1 ? '、' : ''}}</text>
+        </view>
+        <button class="order-btn" bindtap="orderService" data-rentid="{{item.rentId}}">立即预订</button>
+      </view>
+    </view>
+  </view>
+</view>

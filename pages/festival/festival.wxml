@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="page-header">
+    <text class="title">节日花礼预订</text>
+    <text class="subtitle">精选节日花礼，传递美好祝福</text>
+  </view>
+
+  <view class="festival-list">
+    <view wx:for="{{festivalGifts}}" wx:key="giftId" class="festival-item">
+      <image src="{{item.imgUrl}}" mode="widthFix" class="festival-image" />
+      <view class="festival-info">
+        <view class="festival-header">
+          <view class="gift-title">{{item.giftName}}</view>
+          <view class="festival-tag">{{item.festival}}</view>
+        </view>
+        <view class="gift-price">
+          <text class="price">￥{{item.price}}</text>
+          <text wx:if="{{item.预售}}" class="pre-sale-tag">预售</text>
+        </view>
+        <view class="gift-desc">{{item.description}}</view>
+        <view class="delivery-info">
+          <text class="delivery-label">配送：</text>
+          <text class="delivery-value">{{item.delivery}}</text>
+        </view>
+        <button class="order-btn" bindtap="orderGift" data-giftid="{{item.giftId}}">立即预订</button>
+      </view>
+    </view>
+  </view>
+</view>
