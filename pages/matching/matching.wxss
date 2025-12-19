@@ -1,0 +1,180 @@
+/* pages/matching/matching.wxss */
+.matching-container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400rpx;
+}
+
+/* 季节性养护提醒 */
+.seasonal-tips-section {
+  background-color: white;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.seasonal-tips-section .section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.tip-content {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  padding: 10rpx 0;
+}
+
+/* 花卉搭配建议列表 */
+.matching-list .section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.matching-item {
+  background-color: white;
+  border-radius: 12rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.matching-card {
+  border: none;
+  border-radius: 0;
+}
+
+.matching-card .van-card__thumb {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+}
+
+.matching-card .van-card__title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.matching-card .van-card__desc {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15rpx;
+}
+
+.matching-card .van-card__price {
+  font-size: 30rpx;
+  color: #c03131;
+  font-weight: 600;
+}
+
+.matching-tags {
+  display: flex;
+  gap: 10rpx;
+  margin-top: 10rpx;
+}
+
+.matching-actions {
+  display: flex;
+  gap: 15rpx;
+  margin-top: 15rpx;
+}
+
+.matching-actions .van-button {
+  flex: 1;
+}
+
+/* 搭配花卉列表 */
+.combination-flowers {
+  padding: 20rpx 30rpx 30rpx;
+  background-color: #fafafa;
+}
+
+.subsection-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.flowers-grid {
+  display: flex;
+  gap: 20rpx;
+  flex-wrap: wrap;
+}
+
+.flower-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120rpx;
+  cursor: pointer;
+}
+
+.flower-image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-bottom: 10rpx;
+  object-fit: cover;
+  border: 2rpx solid #eee;
+}
+
+.flower-name {
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 375px) {
+  .matching-container {
+    padding: 15rpx;
+  }
+
+  .matching-item {
+    margin-bottom: 25rpx;
+  }
+
+  .matching-card {
+    padding: 20rpx;
+  }
+
+  .matching-actions {
+    flex-direction: column;
+    gap: 10rpx;
+  }
+
+  .flowers-grid {
+    gap: 15rpx;
+  }
+
+  .flower-item {
+    width: 100rpx;
+  }
+
+  .flower-image {
+    width: 80rpx;
+    height: 80rpx;
+  }
+}

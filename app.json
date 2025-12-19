@@ -4,7 +4,9 @@
     "pages/my/my",
     "pages/cart/cart",
     "pages/detail/detail",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/preferences/preferences",
+    "pages/matching/matching"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

@@ -111,5 +111,12 @@ Page({
         }
       }
     })
+  },
+
+  // 跳转到个性化偏好设置页面
+  goToPreferences() {
+    wx.navigateTo({
+      url: '/pages/preferences/preferences'
+    });
   }
 })

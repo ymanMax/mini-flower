@@ -1,1 +1,72 @@
 .iswiper-item{height:200px;border:1px solid}.goodsList{padding:10px;box-sizing:border-box}.goodsList .goods-item{width:45%;border:1px solid #eee;border-radius:5px}.goodsList .goods-item .goods-info{padding:0 10px;box-sizing:border-box}.goodsList .goods-item .goods-info .goods-title{max-width:175px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.goodsList .goods-item .goods-info .price-info{box-sizing:border-box}.goodsList .goods-item .goods-info .price-info .price{font-weight:bold;color:#f40}.goodsList .goods-item .goods-info .price-info .originPrice{text-decoration:line-through}.footer{padding:10px;text-align:center}
+
+/* 个性化推荐模块样式 */
+.recommendation-section {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.section-header {
+  padding: 0 10rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.more-link {
+  font-size: 28rpx;
+  color: #c03131;
+}
+
+.recommendation-cards {
+  padding: 0 10rpx;
+  box-sizing: border-box;
+}
+
+.recommendation-card {
+  width: 30%;
+  text-align: center;
+  padding: 20rpx 10rpx;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+  background-color: #fafafa;
+  margin-bottom: 20rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.recommendation-card:active {
+  transform: scale(0.95);
+  background-color: #f0f0f0;
+}
+
+.card-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-bottom: 15rpx;
+  object-fit: cover;
+  border: 2rpx solid #eee;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.card-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

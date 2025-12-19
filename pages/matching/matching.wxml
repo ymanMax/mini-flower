@@ -1,0 +1,85 @@
+<!--pages/matching/matching.wxml-->
+<view class="matching-container">
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <van-loading size="32px" color="#c03131">加载中...</van-loading>
+  </view>
+
+  <!-- 季节性养护提醒 -->
+  <view wx:if="{{seasonalTips.length > 0}}" class="seasonal-tips-section">
+    <view class="section-title">{{currentSeason}}养护提醒</view>
+    <van-collapse accordion>
+      <van-collapse-item
+        wx:for="{{seasonalTips}}"
+        wx:key="tipId"
+        title="{{item.title}}"
+      >
+        <view class="tip-content">{{item.content}}</view>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+
+  <!-- 花卉搭配建议列表 -->
+  <view wx:else class="matching-list">
+    <view class="section-title">精选花卉搭配</view>
+
+    <view wx:for="{{matchingSuggestions}}" wx:key="combinationId" class="matching-item">
+      <van-card
+        custom-class="matching-card"
+        title="{{item.title}}"
+        desc="{{item.description}}"
+        price="{{item.price}}"
+        origin-price=""
+        thumb="/img/bg.png"
+      >
+        <view slot="tags" class="matching-tags">
+          <van-tag type="primary" size="small">{{item.scenario}}</van-tag>
+          <van-tag type="success" size="small">热度 {{item.popularity}}</van-tag>
+        </view>
+
+        <view slot="footer" class="matching-actions">
+          <van-button
+            size="small"
+            bindtap="viewMatchingDetail"
+            data-combination-id="{{item.combinationId}}"
+          >
+            查看详情
+          </van-button>
+          <van-button
+            type="primary"
+            size="small"
+            bindtap="addToCart"
+            data-flower-id="{{item.flowers[0]}}"
+          >
+            加入购物车
+          </van-button>
+          <van-button
+            type="success"
+            size="small"
+            bindtap="buyNow"
+            data-flower-id="{{item.flowers[0]}}"
+          >
+            立即购买
+          </van-button>
+        </view>
+      </van-card>
+
+      <!-- 搭配花卉列表 -->
+      <view class="combination-flowers">
+        <view class="subsection-title">包含花卉：</view>
+        <view class="flowers-grid">
+          <view
+            wx:for="{{item.flowers}}"
+            wx:key="index"
+            class="flower-item"
+            bindtap="viewFlowerDetail"
+            data-flower-id="{{item}}"
+          >
+            <image class="flower-image" src="/img/bg.png"></image>
+            <text class="flower-name">花卉{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,6 +1,8 @@
 import {
-  homeRequest
+  homeRequest,
+  recommendationRequest
 } from "../../api/index"
+import FlowerRecommendationAlgorithm from '../../utils/recommendation/algorithm';
 
 
 
@@ -20,6 +22,11 @@ Page({
 
     // 显示加载更多文本
     isShowLoadMore: true,
+
+    // 个性化推荐数据
+    personalizedRecommendations: [],
+    popularRecommendations: [],
+    seasonalRecommendations: []
   },
 
 
@@ -31,10 +38,14 @@ Page({
     })
 
     // 当所有数据加载完成关闭 loding 弹窗
-    Promise.all([this.getSwiperListData(), this.getGoodsListData()]).then((info) => {
-      if (Object.values(info).every(item => item == undefined)) {
-        wx.hideLoading();
-      }
+    Promise.all([
+      this.getSwiperListData(),
+      this.getGoodsListData(),
+      this.getPersonalizedRecommendations(),
+      this.getPopularRecommendations(),
+      this.getSeasonalRecommendations()
+    ]).then((info) => {
+      wx.hideLoading();
     })
   },
 
@@ -99,8 +110,75 @@ Page({
 
 
 
+  // 获取个性化推荐数据
+  getPersonalizedRecommendations() {
+    return recommendationRequest.getPersonalizedRecommendations()
+      .then(res => {
+        if (res.code === 666) {
+          this.setData({
+            personalizedRecommendations: res.recommendations.basedOnPreferences || []
+          });
+        }
+      })
+      .catch(err => {
+        console.error('加载个性化推荐数据失败:', err);
+      });
+  },
+
+  // 获取热门推荐数据
+  getPopularRecommendations() {
+    return recommendationRequest.getPersonalizedRecommendations()
+      .then(res => {
+        if (res.code === 666) {
+          this.setData({
+            popularRecommendations: res.recommendations.popular || []
+          });
+        }
+      })
+      .catch(err => {
+        console.error('加载热门推荐数据失败:', err);
+      });
+  },
+
+  // 获取季节性推荐数据
+  getSeasonalRecommendations() {
+    return recommendationRequest.getSeasonalRecommendations()
+      .then(res => {
+        if (res.code === 666) {
+          this.setData({
+            seasonalRecommendations: res.recommendations || []
+          });
+        }
+      })
+      .catch(err => {
+        console.error('加载季节性推荐数据失败:', err);
+      });
+  },
+
   // 用户上拉触底事件
   onReachBottom() {
     this.getGoodsListData();
+  },
+
+  // 跳转到个性化偏好设置页面
+  goToPreferences() {
+    wx.navigateTo({
+      url: '/pages/preferences/preferences'
+    });
+  },
+
+  // 跳转到花卉搭配建议页面
+  goToMatching() {
+    wx.navigateTo({
+      url: '/pages/matching/matching'
+    });
+  },
+
+  // 跳转到季节性推荐页面
+  goToSeasonal() {
+    wx.showToast({
+      title: '季节性推荐功能开发中',
+      icon: 'none'
+    });
   }
 })
