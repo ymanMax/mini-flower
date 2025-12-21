@@ -88,6 +88,27 @@ Page({
     })
   },
 
+  // 跳转到我的植物
+  goToMyPlants() {
+    wx.navigateTo({
+      url: '/pages/plants/plants'
+    })
+  },
+
+  // 跳转到植物诊断
+  goToDiagnosis() {
+    wx.navigateTo({
+      url: '/pages/diagnosis/diagnosis'
+    })
+  },
+
+  // 跳转到病虫害知识库
+  goToKnowledge() {
+    wx.navigateTo({
+      url: '/pages/knowledge/knowledge'
+    })
+  },
+
   // 登出
   logout() {
     wx.showModal({

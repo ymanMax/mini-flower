@@ -4,7 +4,13 @@
     "pages/my/my",
     "pages/cart/cart",
     "pages/detail/detail",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/plants/plants",
+    "pages/plants/add-plant",
+    "pages/plants/plant-detail",
+    "pages/diagnosis/diagnosis",
+    "pages/knowledge/knowledge",
+    "pages/plants/care-log"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

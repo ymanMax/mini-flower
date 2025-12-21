@@ -1,0 +1,113 @@
+.plant-detail-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+.plant-header {
+  display: flex;
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.plant-image {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 8rpx;
+  margin-right: 30rpx;
+}
+
+.plant-basic-info {
+  flex: 1;
+}
+
+.plant-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.plant-variety {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.plant-badge {
+  display: inline-block;
+  background-color: #07c160;
+  color: #fff;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+}
+
+.info-group {
+  margin-bottom: 30rpx;
+}
+
+.reminders-section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+  padding: 0 10rpx;
+}
+
+.reminder-card {
+  margin-bottom: 15rpx;
+}
+
+.reminder-content {
+  display: flex;
+  align-items: center;
+}
+
+.reminder-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.reminder-icon.water {
+  color: #1890ff;
+}
+
+.reminder-icon.fertilizer {
+  color: #52c41a;
+}
+
+.reminder-icon.trim {
+  color: #fa8c16;
+}
+
+.reminder-text {
+  flex: 1;
+}
+
+.reminder-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 4rpx;
+}
+
+.reminder-desc {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.actions-section {
+  display: flex;
+  gap: 20rpx;
+  padding: 0 10rpx;
+}
+
+.action-btn {
+  flex: 1;
+}

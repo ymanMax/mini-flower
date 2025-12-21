@@ -1,0 +1,49 @@
+<van-nav-bar title="植物详情" left-text="返回" bind:click-left="onClickLeft">
+  <van-button slot="right" size="small" bindtap="goToCareLog">养护日志</van-button>
+</van-nav-bar>
+
+<view class="plant-detail-container">
+  <view class="plant-header">
+    <image class="plant-image" src="{{plant.image}}" mode="aspectFit" />
+    <view class="plant-basic-info">
+      <view class="plant-name">{{plant.name}}</view>
+      <view class="plant-variety">{{plant.variety}}</view>
+      <view class="plant-badge">{{plant.status}}</view>
+    </view>
+  </view>
+
+  <van-cell-group class="info-group">
+    <van-cell title="购买时间" value="{{plant.buyDate}}" />
+    <van-cell title="已养护时间" value="{{plant.careDays}}天" />
+    <van-cell title="养护要求" is-link>
+      <view slot="right-icon">{{plant.careRequirements}}</view>
+    </van-cell>
+  </van-cell-group>
+
+  <view class="reminders-section">
+    <view class="section-title">
+      <van-icon name="clock-o" /> 养护提醒
+    </view>
+    <van-card wx:for="{{plant.reminders}}" wx:key="type" class="reminder-card">
+      <view class="reminder-content">
+        <van-icon name="{{item.icon}}" class="reminder-icon {{item.type}}" />
+        <view class="reminder-text">
+          <view class="reminder-title">{{item.title}}</view>
+          <view class="reminder-desc">{{item.description}}</view>
+        </view>
+        <van-button type="primary" size="small" bindtap="completeTask" data-type="{{item.type}}">
+          已完成
+        </van-button>
+      </view>
+    </van-card>
+  </view>
+
+  <view class="actions-section">
+    <van-button type="primary" class="action-btn" bindtap="goToDiagnosis">
+      健康诊断
+    </van-button>
+    <van-button type="default" class="action-btn" bindtap="addCareLog">
+      添加养护记录
+    </van-button>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<van-nav-bar title="添加植物" left-text="返回" bind:click-left="onClickLeft" />
+
+<view class="add-plant-container">
+  <van-cell-group>
+    <van-field
+      label="植物名称"
+      placeholder="请输入植物名称"
+      value="{{plantName}}"
+      bind:change="onPlantNameChange"
+    />
+
+    <van-field
+      label="植物品种"
+      placeholder="请输入植物品种"
+      value="{{plantVariety}}"
+      bind:change="onPlantVarietyChange"
+    />
+
+    <van-cell title="购买时间" is-link bindtap="showDatePicker">
+      <view slot="right-icon">{{buyDate || '请选择购买时间'}}</view>
+    </van-cell>
+
+    <van-field
+      label="养护要求"
+      type="textarea"
+      placeholder="请输入养护要求（如光照、浇水频率等）"
+      value="{{careRequirements}}"
+      bind:change="onCareRequirementsChange"
+    />
+
+    <view class="upload-section">
+      <view class="section-title">植物照片</view>
+      <van-uploader file-list="{{fileList}}" bind:after-read="afterRead" deletable />
+    </view>
+  </van-cell-group>
+
+  <van-button type="primary" class="submit-button" bindtap="submitPlant">
+    添加植物
+  </van-button>
+</view>
+
+<van-datetime-picker
+  type="date"
+  value="{{currentDate}}"
+  bind:confirm="onDateConfirm"
+  bind:cancel="onDateCancel"
+  visible="{{showDatePickerVisible}}"
+/>
