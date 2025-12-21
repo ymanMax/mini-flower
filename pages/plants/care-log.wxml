@@ -1,0 +1,63 @@
+<van-nav-bar title="养护日志" left-text="返回" bind:click-left="onClickLeft">
+  <van-button slot="right" type="primary" size="small" bindtap="addLog">添加记录</van-button>
+</van-nav-bar>
+
+<view wx:if="{{logs.length === 0}}" class="empty-container">
+  <van-empty description="暂无养护记录" />
+</view>
+
+<view wx:else class="log-list">
+  <view wx:for="{{logs}}" wx:key="id" class="log-item">
+    <van-card class="log-card">
+      <view slot="header" class="log-header">
+        <view class="log-date">{{item.date}}</view>
+        <van-tag type="{{item.type === 'water' ? 'primary' : item.type === 'fertilizer' ? 'success' : 'warning'}}">
+          {{item.typeText}}
+        </van-tag>
+      </view>
+      <view class="log-content">
+        <view class="log-action">{{item.action}}</view>
+        <view class="log-notes" wx:if="{{item.notes}}">
+          <van-icon name="notes-o" /> {{item.notes}}
+        </view>
+      </view>
+    </van-card>
+  </view>
+</view>
+
+<van-popup
+  show="{{showAddLog}}"
+  position="bottom"
+  custom-style="height: 80%"
+  bind:close="onCloseAddLog"
+>
+  <view class="add-log-popup">
+    <view class="popup-title">添加养护记录</view>
+    <van-cell-group>
+      <van-picker
+        title="养护类型"
+        columns="{{logTypes}}"
+        bind:confirm="onTypeConfirm"
+        value-key="name"
+      >
+        <van-cell is-link title="养护类型" value="{{selectedType.name || '请选择'}}" />
+      </van-picker>
+      <van-field
+        label="具体操作"
+        placeholder="请输入具体操作内容"
+        value="{{logAction}}"
+        bind:change="onActionChange"
+      />
+      <van-field
+        label="备注"
+        type="textarea"
+        placeholder="请输入备注信息"
+        value="{{logNotes}}"
+        bind:change="onNotesChange"
+      />
+    </van-cell-group>
+    <van-button type="primary" class="confirm-btn" bindtap="confirmAddLog">
+      确认添加
+    </van-button>
+  </view>
+</van-popup>

@@ -1,0 +1,59 @@
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  padding: 40rpx;
+}
+
+.log-list {
+  padding: 20rpx;
+}
+
+.log-item {
+  margin-bottom: 20rpx;
+}
+
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.log-date {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.log-content {
+  margin-top: 15rpx;
+}
+
+.log-action {
+  font-size: 26rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.log-notes {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.add-log-popup {
+  padding: 30rpx;
+}
+
+.popup-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+  color: #333;
+}
+
+.confirm-btn {
+  margin-top: 40rpx;
+  width: 100%;
+}

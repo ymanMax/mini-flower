@@ -1,0 +1,31 @@
+<van-nav-bar title="我的植物" left-text="返回" bind:click-left="onClickLeft">
+  <van-button slot="right" type="primary" size="small" bindtap="goToAddPlant">添加植物</van-button>
+</van-nav-bar>
+
+<view wx:if="{{plants.length === 0}}" class="empty-container">
+  <van-empty description="暂无植物，添加第一个植物吧" />
+  <van-button type="primary" bindtap="goToAddPlant" style="margin-top: 20rpx;">立即添加</van-button>
+</view>
+
+<view wx:else class="plant-list">
+  <van-card wx:for="{{plants}}" wx:key="id" class="plant-item" bindtap="goToPlantDetail" data-id="{{item.id}}">
+    <view slot="header" class="plant-header">
+      <image class="plant-image" wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFit" />
+      <view class="plant-info">
+        <view class="plant-name">{{item.name}}</view>
+        <view class="plant-variety">{{item.variety}}</view>
+      </view>
+    </view>
+    <view class="plant-details">
+      <view class="detail-item">
+        <text class="label">购买时间：</text>
+        <text class="value">{{item.buyDate}}</text>
+      </view>
+      <view class="care-reminders" wx:if="{{item.reminders}}">
+        <van-tag wx:for="{{item.reminders}}" wx:key="type" type="warning" size="small" class="reminder-tag">
+          {{item.content}}
+        </van-tag>
+      </view>
+    </view>
+  </van-card>
+</view>

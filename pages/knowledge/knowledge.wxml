@@ -1,0 +1,64 @@
+<van-nav-bar title="病虫害知识库" left-text="返回" bind:click-left="onClickLeft" />
+
+<view class="knowledge-container">
+  <van-search
+    placeholder="搜索病虫害名称或症状"
+    value="{{searchKey}}"
+    bind:search="onSearch"
+    style="margin-bottom: 20rpx;"
+  />
+
+  <van-tabs active="{{activeTab}}" bind:change="onTabChange">
+    <van-tab title="常见病害">
+      <view class="disease-list">
+        <van-cell-group>
+          <van-cell
+            wx:for="{{diseases}}"
+            wx:key="id"
+            is-link
+            bindtap="viewDetail"
+            data-item="{{item}}"
+          >
+            <view slot="title" class="disease-title">{{item.name}}</view>
+            <view slot="label" class="disease-symptom">{{item.symptom}}</view>
+          </van-cell>
+        </van-cell-group>
+      </view>
+    </van-tab>
+    <van-tab title="常见虫害">
+      <view class="pest-list">
+        <van-cell-group>
+          <van-cell
+            wx:for="{{pests}}"
+            wx:key="id"
+            is-link
+            bindtap="viewDetail"
+            data-item="{{item}}"
+          >
+            <view slot="title" class="pest-title">{{item.name}}</view>
+            <view slot="label" class="pest-symptom">{{item.symptom}}</view>
+          </van-cell>
+        </van-cell-group>
+      </view>
+    </van-tab>
+  </van-tabs>
+
+  <van-popup
+    show="{{showDetail}}"
+    position="bottom"
+    custom-style="height: 70%"
+    bind:close="onCloseDetail"
+  >
+    <view class="detail-popup">
+      <view class="popup-title">{{selectedItem.name}}</view>
+      <view class="popup-section">
+        <view class="section-title">症状表现：</view>
+        <view class="section-content">{{selectedItem.symptom}}</view>
+      </view>
+      <view class="popup-section">
+        <view class="section-title">防治方法：</view>
+        <view class="section-content">{{selectedItem.prevention}}</view>
+      </view>
+    </view>
+  </van-popup>
+</view>

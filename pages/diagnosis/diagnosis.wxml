@@ -1,0 +1,42 @@
+<van-nav-bar title="植物健康诊断" left-text="返回" bind:click-left="onClickLeft" />
+
+<view class="diagnosis-container">
+  <view class="upload-area">
+    <van-uploader
+      file-list="{{fileList}}"
+      bind:after-read="afterRead"
+      deletable
+      title="上传植物照片"
+      description="拍摄植物的叶片或整体照片，系统将为您诊断健康状况"
+      max-count="1"
+    />
+  </view>
+
+  <van-button
+    type="primary"
+    class="diagnose-button"
+    bindtap="startDiagnosis"
+    disabled="{{fileList.length === 0}}"
+  >
+    开始诊断
+  </van-button>
+
+  <view wx:if="{{diagnosisResult}}" class="result-section">
+    <view class="section-title">诊断结果</view>
+    <van-card class="result-card">
+      <view class="result-header">
+        <view class="result-title">{{diagnosisResult.title}}</view>
+        <van-tag type="{{diagnosisResult.type}}" class="result-tag">
+          {{diagnosisResult.status}}
+        </van-tag>
+      </view>
+      <view class="result-content">
+        <view class="result-desc">{{diagnosisResult.description}}</view>
+        <view class="result-solution" wx:if="{{diagnosisResult.solution}}">
+          <view class="solution-title">建议处理方案：</view>
+          <view class="solution-content">{{diagnosisResult.solution}}</view>
+        </view>
+      </view>
+    </van-card>
+  </view>
+</view>
